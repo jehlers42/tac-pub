@@ -1,1 +1,4 @@
-site_name: My Docs
+site_name: Tech Writing and More
+site_url: https://jehlers42.github.io/tac-pub
+theme:
+  name: material
