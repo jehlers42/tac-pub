@@ -1,0 +1,804 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://jehlers42.github.io/tac-pub/sampleCookbook/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>Crunchyroll Game Vault API Cookbook - Tech Writing and More</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#crunchyroll-game-vault-api-cookbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Tech Writing and More" class="md-header__button md-logo" aria-label="Tech Writing and More" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tech Writing and More
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Crunchyroll Game Vault API Cookbook
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Tech Writing and More" class="md-nav__button md-logo" aria-label="Tech Writing and More" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tech Writing and More
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to MkDocs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Crunchyroll Game Vault API Cookbook
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Crunchyroll Game Vault API Cookbook
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#game-vault-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Game Vault APIs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Vault APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-accountsv1" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /accounts/v1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /accounts/v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responses
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-vault-silent-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Game Vault Silent Login
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Vault Silent Login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    <span class="md-ellipsis">
+      Android
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Android">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-an-android-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Up an Android App
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      iOS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="iOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-an-ios-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Up an iOS App
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-web-key-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Web Key Sets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#game-vault-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Game Vault APIs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Vault APIs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#post-accountsv1" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /accounts/v1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POST /accounts/v1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      Responses
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#game-vault-silent-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Game Vault Silent Login
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Game Vault Silent Login">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#android" class="md-nav__link">
+    <span class="md-ellipsis">
+      Android
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Android">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-an-android-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Up an Android App
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      iOS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="iOS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set-up-an-ios-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Set Up an iOS App
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#json-web-key-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSON Web Key Sets
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="crunchyroll-game-vault-api-cookbook">Crunchyroll Game Vault API Cookbook</h1>
+<p>Crunchyroll's Game Vault provides an ever-expanding set of games to our users. Subscribers that have the appropriate membership tier can access the Game Vault and download games to their mobile device as they would with other mobile games.</p>
+<p>Full integration with Game Vault provides a standardized login flow for your users. When they open your game they'll see a login page where they can enter their Crunchyroll credentials. If they have a subscription with Game Vault access, the flow will let them access your game immediately. If not, it will guide them to a screen where they can upgrade their subscription to the appropriate tier.</p>
+<p>For any questions about processes and APIs not covered in this Cookbook, reach out to your Crunchyroll representative.</p>
+<h2 id="game-vault-apis">Game Vault APIs</h2>
+<p>As a Game Vault partner, you'll use several APIs to integrate with Crunchyroll services. The endpoints outlined in this document come from the following Crunchyroll APIs:</p>
+<ul>
+<li><a href="https://github.com/crunchyroll/"><code>cx-account</code></a></li>
+<li><a href="https://github.com/crunchyroll/"><code>cx-account-auth</code></a></li>
+<li><a href="https://github.com/crunchyroll/"><code>cx-partners</code></a></li>
+<li><a href="https://github.com/crunchyroll/"><code>cx-subscription-processor</code></a></li>
+</ul>
+<p>External access to these APIs is only available to approved Game Vault partners, teams, and vendors. You can use these endpoints to perform the following tasks:</p>
+<ul>
+<li>Create user accounts.</li>
+<li>Modify existing user accounts.</li>
+<li>Set up password recovery options.</li>
+<li>Create access tokens.</li>
+<li>Retrieve a user's subscription tier and its associated benefits.</li>
+<li>Validate an iOS user with an iTunes receipt.</li>
+</ul>
+<p>During production of your Game Vault project you can access these API endpoints using the Crunchroll production server: <code>https://xxx.crunchyroll.com/</code></p>
+<p>If you need to use the staging server, you can access it with this address: <code>https://xxx.crunchyroll.com/</code></p>
+<p>!!! info
+    You must set up and connect to the <a href="https://crunchyroll.wiki">Crunchyroll VPN</a> before you can use the staging server.</p>
+<p><strong>Endpoints Overview</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method and Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST /accounts/v1</code></td>
+<td>Creates a new user account through the <code>cx-account</code> API.</td>
+</tr>
+<tr>
+<td><code>GET /accounts/v1/{account_id}/profile</code></td>
+<td>Retrieves the profile information for a user's account.</td>
+</tr>
+<tr>
+<td><code>GET /accounts/v1/tokens/password/{token}</code></td>
+<td>Uses an account's token ID to retrieve an account-specific password reset token.</td>
+</tr>
+<tr>
+<td><code>POST /accounts/v1/password_forgot</code></td>
+<td>Triggers the <code>cx-account</code> API to send a user a password reset email.</td>
+</tr>
+<tr>
+<td><code>POST /accounts/v1/password_reset</code></td>
+<td>Changes a user's password using their one-time password reset token.</td>
+</tr>
+<tr>
+<td><code>POST /auth/v1/token</code></td>
+<td>Retrieves a user's access token after providing a set of parameters. The parameters you use depend on the authorization method your game uses.</td>
+</tr>
+<tr>
+<td><code>POST /itunes/receipt-verification</code></td>
+<td>Validates a user's iTunes receipt and then associates that receipt with a subscription account.</td>
+</tr>
+<tr>
+<td><code>GET /subscriptions/{account_id}/benefits</code></td>
+<td>Retrieves a list of benefits associated with the requested account.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="post-accountsv1">POST /accounts/v1</h3>
+<p>Creates a new user account, including any optional profile information.</p>
+<p>``` title="URI"
+POST https://xxx.crunchyroll.com/accounts/v1</p>
+<pre><code>
+#### Header Parameters
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| **X-Tenant** | string | Yes | The requested tenant. A list of supported tenants is available in the [API service config file](https://github.com/crunchyroll/).&lt;br&gt;Do not use if a client accesses the external server through an AWS CloudFront URL. |
+
+#### Request Body
+
+The parameters here are defined in the `CreateAccount` schema.
+
+You can provide additional profile information by adding fields from the [profile validation configuration](https://github.com/crunchyroll/).
+
+| Name | Type | Required | Description |
+| -- | -- | -- | -- |
+| **email** | string | Yes | The email address for the new account. |
+| **password** | string | Yes | The plain-text password for the new account. |
+| **username** | string |  | The username for the new account. |
+| **profile_name** | string |  | The profile name to use for the main account.&lt;br&gt;This value is alphanumeric and must contain at least one (1) character. 50 character maximum. |
+
+##### Example Request
+
+```js
+{
+  &quot;email&quot;: &quot;example@example.com&quot;,
+  &quot;password&quot;: &quot;myverystrongpassword&quot;,
+  &quot;username&quot;: &quot;foo_bar_92&quot;,
+  &quot;maturity_rating&quot;: &quot;M3&quot;,
+  &quot;extended_maturity_rating&quot;:
+    { &quot;BR&quot;: &quot;18&quot; },
+  &quot;profile_name&quot;: &quot;profileName1234&quot;
+}
+</code></pre>
+<h4 id="responses">Responses</h4>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>204</strong></td>
+<td>Account successfully created.</td>
+</tr>
+<tr>
+<td><strong>400</strong></td>
+<td>Request validation failed.</td>
+</tr>
+<tr>
+<td><strong>401</strong></td>
+<td>Authorization failed.</td>
+</tr>
+<tr>
+<td><strong>403</strong></td>
+<td>Access is forbidden.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="game-vault-silent-login">Game Vault Silent Login</h2>
+<p>Silent login provides a method for mobile apps to access Game Vault APIs. This service is available as an option in apps developed for Android and iOS.</p>
+<h3 id="android">Android</h3>
+<p>Users must install and sign in to the Android app. The app must be distributed using the Crunchyroll Google Play account before they can use silent login.</p>
+<p>You can access a sample app on the <a href="https://github.com/crunchyroll/"><code>cx-android-app</code> GitHub repository</a>. If you don't have access, contact your Crunchyroll representative.</p>
+<h4 id="set-up-an-android-app">Set Up an Android App</h4>
+<p>To view refresh tokens and enable silent login for your Android app, add the following permission to your <code>AndroidManifest.xml</code> file:</p>
+<pre><code class="language-xml">&lt;uses-permission android:name=&quot;com.crunchyroll.crunchyroid&quot; /&gt;
+</code></pre>
+<p>Add the following tag to the <code>AndroidManifest.xml</code> file of the app that will access silent login provider:</p>
+<pre><code class="language-xml">&lt;queries&gt;
+    &lt;provider
+        android:authorities=&quot;com.crunchyroll.crunchyroid&quot; /&gt;
+&lt;/queries&gt;
+</code></pre>
+<p>The following example uses a Kotlin function to access a refresh token with <code>CredentialsProvider</code>:</p>
+<pre><code class="language-kotlin">fun getRefreshToken(): String {
+    val uri = Uri.parse(&quot;content://com.crunchyroll.crunchyroid&quot;)
+    val cursor = contentResolver.query(uri, null, null, null, null)
+    if (cursor != null) {
+        if (cursor.moveToFirst()) {
+            val refreshToken = cursor.getString(0)
+            return refreshToken
+        }
+    }
+    cursor?.close()
+    return &quot;&quot;
+}
+</code></pre>
+<h3 id="ios">iOS</h3>
+<p>On iOS, apps save the user's refresh token in a shared keychain that any app from the same app group can access. Apps with the same App ID Prefix setup are considered part of the same app group.</p>
+<p>Before you can enable silent login for an iOS app, you must be a member the Crunchyroll Apple Development Team. Your app must be distributed through Crunchyroll's <a href="https://appstoreconnect.apple.com/login">AppStoreConnect</a> account or with <a href="https://developer.apple.com/testflight/">TestFlight</a>.</p>
+<p>A user's refresh token contains the following information in UTF8 format:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Keychain Service Name</strong></td>
+<td><code>crunchyroll.ios</code></td>
+</tr>
+<tr>
+<td><strong>Keychain Access Group</strong></td>
+<td><code>crunchyroll.iphone</code></td>
+</tr>
+<tr>
+<td><strong>Keychain Key</strong></td>
+<td><code>crunchyroll.token</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="set-up-an-ios-app">Set Up an iOS App</h4>
+<p><strong>To set up your app for iOS</strong></p>
+<ol>
+<li>Make sure you have <strong>Keychain Sharing</strong> enabled in the Sharing &amp; Capabilities menu of Xcode.</li>
+<li>Add <em>crunchyroll.iphone</em> to Keychain Groups.</li>
+<li>Add the <code>$(AppIdentifierPrefix)crunchyroll.iphone</code> keychain group to your app's <em>*.entitlements</em> file.</li>
+</ol>
+<p>The following code snippet performs a silent login if there is a valid refresh token in the user's shared Keychain.</p>
+<pre><code class="language-js">func performSilentLogin() {
+    let keychainService = &quot;crunchyroll.ios&quot;
+    let keychainRefreshTokenKey = &quot;crunchyroll.token&quot;
+    let keychainAccessGroup = &quot;crunchyroll.iphone&quot;
+    let keychain = Keychain(service: keychainService, accessGroup: keychainAccessGroup)
+    if let token = try? keychain.get(keychainRefreshTokenKey) {
+        // Get JWT using refresh token by calling &quot;POST /auth/v1/token&quot; with
+        // grant_type = refresh_token
+        // refresh_token = {token}
+    } else {
+        // CR iOS app is not installed or user is not logged in
+    }
+}
+</code></pre>
+<h2 id="json-web-key-sets">JSON Web Key Sets</h2>
+<p>Crunchyroll provides a <a href="https://xxx.crunchyroll.com/">method to obtain JSON Web Key</a> (JWK) sets that let you validate a user's JSON Web Token (JWT). If the user's JWT contains a <code>cr_bento</code> claim, they are on a subscription tier that includes Game Vault. JWKs are cached for up to one (1) hour and are rotated at least once every 30 days.</p>
+<p>!!! warning
+    Even though JWTs are limited in scope by the client ID issued to your team, they are still considered sensitive data and you should never store or log them on a server.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+    
+  </body>
+</html>
